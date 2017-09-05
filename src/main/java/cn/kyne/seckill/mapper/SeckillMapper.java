@@ -1,6 +1,7 @@
 package cn.kyne.seckill.mapper;
 
 import cn.kyne.seckill.entity.Seckill;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ public interface SeckillMapper {
      * @param killTime
      * @return
      */
-    int reduceNumber(long seckillId, Date killTime);
+    int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
     /**
      * 根据ID查询秒杀商品对象
@@ -31,6 +32,6 @@ public interface SeckillMapper {
      * @param limit
      * @return
      */
-    List<Seckill> listAll(int offset, int limit);
+    List<Seckill> listAll(@Param("offset") int offset,@Param("limit") int limit);
 
 }

@@ -7,13 +7,8 @@
         <!--获取插入数据的自增主键 默认false-->
         <setting name="useGeneratedKeys" value="true"/>
         <!--使用列别名替换列别名 默认true-->
-        <setting name="userColumnLabel" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
         <!--开启驼峰命名转换 默认是false-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    <!--给类取别名-->
-    <typeAliases>
-        <package name="cn.kyne.seckill.entity"/>
-    </typeAliases>
-
 </configuration>
