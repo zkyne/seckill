@@ -24,4 +24,6 @@ public interface SeckillService {
      */
     Seckill getSeckill(long seckillId);
 
+
+
 }
