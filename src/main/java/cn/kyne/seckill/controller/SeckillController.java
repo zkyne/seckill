@@ -103,20 +103,21 @@ public class SeckillController {
         }catch (SeckillCloseException sc){
             //秒杀关闭
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStatenum.END);
-            return new SeckillResult<>(false, seckillExecution);
+            return new SeckillResult<>(true, seckillExecution);
         }catch (RepeatKillException rk){
             //重复秒杀
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStatenum.REPEAT_KILL);
-            return new SeckillResult<>(false, seckillExecution);
+            return new SeckillResult<>(true, seckillExecution);
         }catch (Exception e){
             //系统异常
             logger.error(e.getMessage(),e);
             SeckillExecution seckillExecution = new SeckillExecution(seckillId,SeckillStatenum.INNER_ERROR);
-            return new SeckillResult<>(false, seckillExecution);
+            return new SeckillResult<>(true, seckillExecution);
         }
     }
 
-    @GetMapping(value = "/time/current")
+    @GetMapping(value = "/time/current",produces = {"application/json;charset=utf-8"})
+    @ResponseBody
     public SeckillResult<Long> curTime(){
         Date curTime = new Date();
         return new SeckillResult<>(true, curTime.getTime());

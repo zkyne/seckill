@@ -42,7 +42,7 @@
                                 <fmt:formatDate value="${seckill.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </td>
                             <td>
-                                <a class="btn btn-default" href="${pageContext.request.contextPath}/seckill/${seckill.seckillId}/detail" target="_blank">Link</a>
+                                <a class="btn btn-info" href="${pageContext.request.contextPath}/seckill/${seckill.seckillId}/detail" target="_blank">立即进入</a>
                             </td>
                         </tr>
                     </c:forEach>

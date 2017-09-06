@@ -6,7 +6,7 @@
     <title>秒杀商品详情</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <%@ include file="common/head.jsp"%>
     <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../../css/common.css" rel="stylesheet" type="text/css"/>
     <link href="../../css/jquery.bxslider.css" rel="stylesheet" type="text/css">
@@ -113,7 +113,10 @@
                             <h2>￥9.90<span>￥36.00</span><em>限时购</em></h2>
                         </div>
                         <div class="right">
-                            <ul class="time">
+
+                            <span class="glyphicon glyphicon=time"></span>
+                            <span class="glyphicon" id="seckill-box"></span>
+                            <%--<ul class="time">
                                 <div class="time-text">距离开抢时间：</div>
                                 <li class="hours"></li>
                                 <li class="none">:</li>
@@ -121,7 +124,7 @@
                                 <li class="none">:</li>
                                 <li class="miao"></li>
                                 <div class="clear"></div>
-                            </ul>
+                            </ul>--%>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -141,9 +144,38 @@
         </ul>
     </div>
 </div>
-
+<%--modal start--%>
+<div class="modal fade" id="killPhoneModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">
+                    <span class="glyphicon glyphicon-phone"></span>秒杀电话
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <input type="text" name="killPhone" id="killPhone" placeholder="请输入手机号o(∩_∩)o" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <%--验证信息--%>
+                <span id="killPhoneMessage" class="glyphicon"></span>
+                <button type="button" id="killPhoneBtn" class="btn btn-success">
+                    <span class="glyphicon glyphicon-phone"></span>Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<%--modal end--%>
 <div id="returnTop"></div>
 <footer><a href="">抢购即将开始</a></footer>
+<script type="text/javascript" src="../../js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="../../js/seckill.js"></script>
 <script type="text/javascript">
     // 倒计时
     var startTime = new Date();
@@ -225,6 +257,14 @@
         };//参数定义
         $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
     });
+
+    $(function () {
+      seckill.detail._init({
+          seckillId:${seckill.seckillId},
+          startTime:${seckill.startTime.time},//获取毫秒
+          endTime:${seckill.endTime.time}
+      })
+    })
 
 </script>
 
