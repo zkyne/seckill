@@ -5,20 +5,46 @@
 <mapper namespace="cn.kyne.seckill.mapper.SeckillMapper">
 
     <update id="reduceNumber">
-        update seckill set number=number-1
-        where seckill_id = #{seckillId}
-        and number > 0
-        and #{killTime} between start_time and end_time
+        UPDATE seckill
+        SET number = number - 1
+        WHERE seckill_id = #{seckillId}
+              AND number > 0
+              AND #{killTime} BETWEEN start_time AND end_time
     </update>
 
     <select id="getById" parameterType="long" resultType="Seckill">
-        select seckill_id,name,number,start_time,end_time,create_time from seckill where seckill_id = #{seckillId}
+        SELECT
+            seckill_id,
+            name,
+            description,
+            original_price,
+            seckill_price,
+            detail_img,
+            image,
+            number,
+            start_time,
+            end_time,
+            create_time
+        FROM seckill
+        WHERE seckill_id = #{seckillId}
     </select>
 
     <select id="listAll" resultType="Seckill">
-        select seckill_id,name,number,start_time,end_time,create_time from seckill
-        order by create_time desc
-        limit #{offset},#{limit}
+        SELECT
+            seckill_id,
+            name,
+            description,
+            original_price,
+            seckill_price,
+            detail_img,
+            image,
+            number,
+            start_time,
+            end_time,
+            create_time
+        FROM seckill
+        ORDER BY create_time DESC
+        LIMIT #{offset}, #{limit}
     </select>
 
 </mapper>

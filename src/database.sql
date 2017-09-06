@@ -6,6 +6,11 @@ USE seckill;
 CREATE TABLE seckill(
   `seckill_id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '商品秒杀ID',
   `name` VARCHAR(120) NOT  NULL COMMENT '秒杀商品名称',
+  `description` VARCHAR(300) NOT NULL COMMENT '秒杀商品描述',
+  `original_price` DOUBLE(6,2) NOT NULL COMMENT '秒杀商品原价',
+  `seckill_price` DOUBLE(6,2) NOT NULL COMMENT '秒杀价格',
+  `detail_img` VARCHAR(200) NOT NULL COMMENT '秒杀商品详情图片',
+  `image` VARCHAR(600) NOT NULL COMMENT '秒杀商品图片',
   `number` INT NOT NULL COMMENT '库存量',
   `start_time` TIMESTAMP NOT NULL COMMENT '秒杀开始时间',
   `end_time` TIMESTAMP NOT NULL COMMENT '秒杀结束时间',
@@ -18,12 +23,12 @@ CREATE TABLE seckill(
 
 -- 初始化数据
 INSERT INTO
-  seckill(name,number,start_time,end_time)
+  seckill(name,description,original_price,seckill_price,detail_img,image,number,start_time,end_time)
 VALUES
-  ('200元秒杀iphone6s',100,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
-  ('500元秒杀ipad',50,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
-  ('100元秒杀小米',200,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
-  ('200元秒杀红米note',150,'2017-09-05 00:00:00','2017-09-06 00:00:00');
+  ('9.9元秒杀《城南旧事》','城南旧事（名师导读，随书赠送《名著考点与创新试题精华》）',36.00,9.90,'99999990001712592_1_o.jpg','25125042-1_u_1.jpg,25125042-2_u_1.jpg,25125042-3_u_1.jpg,25125042-4_u_1.jpg,25125042-5_u_1.jpg',99,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
+  ('9.9元秒杀《好孩子不是管出来的》','好孩子不是管出来的：不骄纵、不惩罚的自然养育',28.00,9.90,'99999990000587406_1_o.jpg','24043653-1_u_6.jpg,24043653-2_u_6.jpg,24043653-3_u_6.jpg,24043653-4_u_6.jpg,24043653-5_u_6.jpg',80,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
+  ('56.9元秒杀韩版潮流女针织衫','【厂家直销！！超值秒杀】 秋季新款韩版宽松大码毛针织衫女士贴布毛衣女套头百搭时尚打底衫',699.00,56.90,'162350024770435_1_o.jpg','1354995795-1_u_1.jpg,1354995795-2_u_1.jpg,1354995795-3_u_1.jpg,1354995795-4_u_1.jpg,1354995795-5_u_1.jpg,',90,'2017-09-05 00:00:00','2017-09-06 00:00:00'),
+  ('9.9元秒杀《朝花夕拾》','朝花夕拾（名师导读，随书赠送《名著考点与创新试题精华》）',39.80,9.90,'99999990001712582_1_o.jpg','25125041-1_u_3.jpg,25125041-2_u_3.jpg,25125041-3_u_3.jpg,25125041-4_u_3.jpg,25125041-5_u_3.jpg,',66,'2017-09-05 00:00:00','2017-09-06 00:00:00');
 
 -- 创建秒杀成功明细表
 CREATE TABLE success_seckilled(

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 秒杀成功记录实体类
  * Created by zhangkun01 on 2017/9/4.
  */
 public class SuccessSeckilled implements Serializable {
