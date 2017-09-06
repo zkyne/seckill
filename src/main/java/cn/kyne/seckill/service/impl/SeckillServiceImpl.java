@@ -27,7 +27,7 @@ import java.util.List;
 @Service
 public class SeckillServiceImpl implements SeckillService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final String slat = "#@$!#@!FDSAT$#%DSFASDAd~sfd";
 
@@ -86,10 +86,8 @@ public class SeckillServiceImpl implements SeckillService {
                     return new SeckillExecution(seckillId, SeckillStatenum.SUCCESS, successSeckilled);
                 }
             }
-        } catch (SeckillCloseException sc) {
+        } catch (SeckillCloseException | RepeatKillException sc) {
             throw sc;
-        } catch (RepeatKillException rk) {
-            throw rk;
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new SeckillException("seckill inner error: " + e.getMessage());
