@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;} 
+body{margin:0 auto;padding:0px;font:14px/1.5  微软雅黑,Microsoft Yahei;color:#000;overflow-x:hidden;}
+.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
+img{border:0;}
+ol,ul{list-style:none;}
+a{color:#000;text-decoration:none}
+*{text-shadow:none}
+hr{height:0px;border:none;border-top:1px solid #c0b4a6;margin:0px;}
+
+
+
+/*==================秒杀列表==================*/
+.miaosha_list{background:#fff;}
+.miaosha_list .img{position:relative;}
+.miaosha_list .img img{display:block;width:100%;}
+.miaosha_list .img .dw{position:absolute;right:0px;top:0px;}
+.miaosha_list .img .dw img{display:block;width:60%;float:right;}
+.miaosha_list .zhuangtai{background:#dadada;padding:0.5em 1em;color:#676767;font-size:14px;font-family:"Microsoft YaHei UI";}
+.miaosha_list .zhuangtai span{float:right;}
+.miaosha_list .textbox{padding:1em 0 0 0;}
+.miaosha_list .textbox h2{color:#333333;font-size:16px;font-weight:normal;font-family:"Microsoft YaHei UI";text-align:center;}
+.miaosha_list .textbox .text{color:#636363;font-weight:normal;font-family:"Microsoft YaHei UI";padding:0.5em 0.5em 0 1em;}
+.miaosha_list .money{padding:0.5em;}
+.miaosha_list .money .left{width:100%;border-bottom: 2px solid #eee;margin-bottom: 0.5em;}
+.miaosha_list .money h2{color:#da1a19;font-size:1.5em;font-weight:normal;font-family:"Microsoft YaHei UI";}
+.miaosha_list .money h2 span{margin-left:5px;color:#aeaeae;font-size:14px;text-decoration:line-through;}
+.miaosha_list .money h2 em{font-style:normal;font-size:14px;margin-left:10px;background: #ff5000;color: #fff;padding: 2px 5px;line-height: 31px;}
+.miaosha_list .money .right{width:100%;border-bottom:1px solid #eee;}
+.miaosha_list .money .time-text{float:left;font-size: 1.2em;line-height: 1.2em;color: #808080;}
+.miaosha_list .right .time{width: 245px;margin: 0 auto;padding-bottom: 1em;}
+.miaosha_list .right .time li{letter-spacing:4px;padding-left:2px;float:left;line-height:20px;height:20px;width:25px;background:url(../images/time_icon1.png) no-repeat;background-size:cover;margin-left:5px;color:#fff;font-size:16px;font-weight:normal;font-family:"微软雅黑";text-align:center;}
+.miaosha_list .right .time li.none{background:none;width:auto;height:auto;line-height:20px;color:#434343;}
+.miaosha_list .tab {padding: 15px;}
+.miaosha_list .tab-nr div{display: none;height: 500px;}
+.miaosha_list .tab-nr .show{display: block;}
+.miaosha_list .tab .tab-hd span:nth-child(1){border-radius: 10px 0 0 10px;}
+.miaosha_list .tab .tab-hd span:nth-child(2){border-radius: 0 10px 10px 0;}
+.miaosha_list .tab .tab-hd span{display: inline-block;width: 49%;line-height:1.5em;font-size:1.2em;color:#5f646e;border:1px solid #5f646e;text-align: center;}
+.miaosha_list .tab .tab-hd .on{background: #5f646e;color: #fff;}
