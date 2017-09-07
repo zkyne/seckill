@@ -6,9 +6,7 @@ import java.io.Serializable;
  * 封装json结果,所有ajax返回类型
  * Created by zhangkun01 on 2017/9/6.
  */
-public class SeckillResult<T> implements Serializable {
-
-    private static final long serialVersionUID = -6069858217643331488L;
+public class SeckillResult<T> {
 
     private boolean success;
     private T data;

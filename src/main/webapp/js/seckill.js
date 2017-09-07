@@ -16,44 +16,55 @@ var seckill = {
     _handleSeckillKill:function (seckillId,node) {
         //处理秒杀逻辑
         node.hide().html('<button class="btn btn-primary btn-lg" id="killBtn">开始秒杀</button>');
-        $.post(seckill.URL._exposer(seckillId),{},function (result) {
-            if(result && result['success']){
-                var exposer = result['data'];
-                if(exposer['exposed']){
-                    //开启秒杀
-                    //获取秒杀地址
-                    var md5 = exposer['md5'];
-                    var killUrl = seckill.URL._execution(seckillId,md5);
-                    //绑定一次点击事件
-                    $('#killBtn').one('click',function () {
-                        //执行秒杀请求
-                        //1.先禁用按钮
-                        $(this).addClass('disabled');
-                        //2.发送请求
-                        $.post(killUrl,{},function (result) {
-                            if(result && result['success']){
-                                var killResult = result['data'];
-                                var state = killResult['state'];
-                                var stateInfo = killResult['stateInfo'];
-                                //3.显示秒杀结果
-                                node.html('<span class="label label-success"> + stateInfo + </span>')
-                            }
+        $.ajax({
+            type:'post',
+            url:seckill.URL._exposer(seckillId),
+            data:{},
+            dataType:'json',
+            success:function (result) {
+                if(result && result['success']){
+                    var exposer = result['data'];
+                    if(exposer['exposed']){
+                        //开启秒杀
+                        //获取秒杀地址
+                        var md5 = exposer['md5'];
+                        var killUrl = seckill.URL._execution(seckillId,md5);
+                        //绑定一次点击事件
+                        $('#killBtn').one('click',function () {
+                            //执行秒杀请求
+                            //1.先禁用按钮
+                            $('#killBtn').prop('disabled','disabled');
+                            //2.发送请求
+                            $.ajax({
+                                type:'post',
+                                url:killUrl,
+                                data:{},
+                                dataType:'json',
+                                success:function (result) {
+                                    if(result && result['success']){
+                                        var killResult = result['data'];
+                                        var state = killResult['state'];
+                                        var stateInfo = killResult['stateInfo'];
+                                        //3.显示秒杀结果
+                                        node.html('<span class="label label-success" style="font-size: 22px">' + stateInfo + '</span>');
+                                    }
+                                }
+                            });
                         });
-                    });
-                    node.show();
+                        node.show(300);
+                    }else{
+                        //未开启秒杀
+                        var curTime = exposer['curTime'];
+                        var startTime = exposer['startTime'];
+                        var endTime = exposer['endTime'];
+                        //重新计算计时逻辑
+                        seckill._countdown(seckillId,curTime,startTime,endTime)
+                    }
                 }else{
-                    //未开启秒杀
-                    var curTime = exposer['curTime'];
-                    var startTime = exposer['startTime'];
-                    var endTime = exposer['endTime'];
-                    //重新计算计时逻辑
-                    seckill._countdown(seckillId,curTime,startTime,endTime)
+                    console.log('result:' + result);
                 }
-            }else{
-                console.log('result:' + result);
             }
         });
-
     },
     _countdown:function (seckillId,curTime,startTime,endTime) {
         var seckillBox = $('#seckill-box');
@@ -76,7 +87,7 @@ var seckill = {
         }
     },
     _validatePhone:function (phone) {
-      return !!(phone && phone.length === 11 && !isNaN(phone));
+       return !!(phone && phone.length === 11 && !isNaN(phone));
     },
 
     detail: {
@@ -89,7 +100,7 @@ var seckill = {
             var endTime = params['endTime'];
             var seckillId = params['seckillId'];
             //验证手机号
-            if(seckill._validatePhone(killPhone)){
+            if(!seckill._validatePhone(killPhone)){
                 //绑定手机号
                 var killPhoneModal = $('#killPhoneModal');
                 killPhoneModal.modal({
@@ -111,13 +122,19 @@ var seckill = {
             }
             //已经登录
             //计时交互
-            $.get(seckill.URL._current(),{},function (result) {
-                if(result && result['success']){
-                    var curTime = result['data'];
-                    //时间判断
-                    seckill._countdown(seckillId,curTime,startTime,endTime);
-                }else{
-                    console.log('result:' + result)
+            $.ajax({
+                type:'get',
+                url:seckill.URL._current(),
+                dataType:'json',
+                data:{},
+                success:function(result){
+                    if(result && result['success']){
+                        var curTime = result['data'];
+                        //时间判断
+                        seckill._countdown(seckillId,curTime,startTime,endTime);
+                    }else{
+                        console.log('result:' + result)
+                    }
                 }
             });
         }

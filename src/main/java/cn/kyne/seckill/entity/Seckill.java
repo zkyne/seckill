@@ -7,9 +7,7 @@ import java.util.Date;
  * 秒杀商品实体类
  * Created by zhangkun01 on 2017/9/4.
  */
-public class Seckill implements Serializable {
-
-    private static final long serialVersionUID = 4321261486935488197L;
+public class Seckill {
 
     private long seckillId;//秒杀商品ID
     private String name;//秒杀商品名称

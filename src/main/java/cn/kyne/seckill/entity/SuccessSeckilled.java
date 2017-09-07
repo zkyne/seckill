@@ -7,9 +7,7 @@ import java.util.Date;
  * 秒杀成功记录实体类
  * Created by zhangkun01 on 2017/9/4.
  */
-public class SuccessSeckilled implements Serializable {
-
-    private static final long serialVersionUID = 5207495408265762745L;
+public class SuccessSeckilled {
 
     private long seckillId;//秒杀商品ID
     private long userPhone;//用户手机号

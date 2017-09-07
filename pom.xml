@@ -137,12 +137,23 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--自定义序列化实体-->
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>1.0.8</version>
+        </dependency>
 
     </dependencies>
     <build>
         <finalName>seckill</finalName>
-        <plugins>
-            <!-- java编译插件 -->
+       <!-- <plugins>
+            &lt;!&ndash; java编译插件 &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -166,7 +177,7 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        </pluginManagement>-->
     </build>
 
 </project>

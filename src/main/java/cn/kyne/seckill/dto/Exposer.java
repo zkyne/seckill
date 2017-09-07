@@ -6,9 +6,7 @@ import java.io.Serializable;
  * 暴露秒杀地址DTO
  * Created by zhangkun01 on 2017/9/5.
  */
-public class Exposer implements Serializable {
-
-    private static final long serialVersionUID = -5833314303073331973L;
+public class Exposer{
 
     private boolean exposed;//是否开启秒杀
     private String md5;

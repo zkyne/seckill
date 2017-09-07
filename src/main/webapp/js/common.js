@@ -10,17 +10,17 @@ jQuery.ljsGlasses = {
 		var _imgarr = _box.find("img");
 		var _length = _imgarr.length;
 		var _index = 0;
-		var _arr = new Array();
+		var _arr = [];
 		_sum.append("<p style='position:absolute;left:0;top:0;'></p>");
 		var _sumbox = _sum.find("p");
 		
 		for(var i=0;i<_length;i++){
-			_arr[i] = new Array();
+			_arr[i] = [];
 			_arr[i][0] = _imgarr.eq(i).attr("src");
 			_arr[i][1] = _imgarr.eq(i).attr("width");
 			_arr[i][2] = _imgarr.eq(i).attr("height");
 			var _scale = _arr[i][1]/_arr[i][2];
-			if(_scale == 1){
+			if(_scale === 1){
 				_arr[i][3] = _obj.boxw;//width
 				_arr[i][4] = _obj.boxh;//height
 				_arr[i][5] = 0;//top

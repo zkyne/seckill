@@ -9,7 +9,8 @@
         SET number = number - 1
         WHERE seckill_id = #{seckillId}
               AND number > 0
-              AND #{killTime} BETWEEN start_time AND end_time
+              AND #{killTime} > start_time
+              AND end_time > #{killTime}
     </update>
 
     <select id="getById" parameterType="long" resultType="Seckill">

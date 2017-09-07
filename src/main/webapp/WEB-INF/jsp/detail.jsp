@@ -1,246 +1,137 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
+<%@ include file="common/tag.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>秒杀商品详情</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@ include file="common/head.jsp"%>
-    <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../../css/common.css" rel="stylesheet" type="text/css"/>
-    <link href="../../css/jquery.bxslider.css" rel="stylesheet" type="text/css">
-
-    <script type="text/javascript" src="../../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../js/common.js"></script>
-    <script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
-    <style type="text/css">
-        body {
-            max-width: 800px;
-        }
-
-        .ui-content {
-            padding: 0;
-            margin: 0;
-        }
-
-        .bx-wrapper .bx-viewport {
-            box-shadow: none;
-            border: none;
-            background: none;
-            left: 0;
-        }
-
-        .bx-wrapper .bx-prev {
-            background: url(../../images/controls.png) no-repeat 0 -32px;
-            left: 0;
-        }
-
-        .bx-wrapper .bx-next {
-            background: url(../../images/controls.png) no-repeat -43px -32px;
-            right: 0;
-        }
-
-        #returnTop {
-            position: fixed;
-            bottom: 60px;
-            right: 10px;
-            width: 44px;
-            height: 44px;
-            background: url(../../images/returnTop.png) no-repeat;
-            background-size: contain;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            height: 50px;
-            width: 100%;
-            border-top: 1px solid #eee;
-            background: #fff;
-            z-index: 1;
-        }
-
-        footer a {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            border-radius: 10px;
-            font-size: 1.5em;
-            text-align: center;
-            color: #ff5000;
-            background: #eee url(../../images/time.png) 28% 1px no-repeat;
-            background-size: 28px;
-            padding-left: 40px;
-        }
-    </style>
-
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <title>秒杀商品详情</title>
 </head>
-<body style="margin-left: 400px">
-
-<div data-role="page" id="mypage" >
-    <div role="main" class="ui-content">
-        <ul class="sliderlist">
-            <li>
-                <div class="miaosha_list">
-                    <br/>
-                    <br/>
-                    <%--<div class="img">
-                        <div>
-                            <img src="images/25125042-1_u_1.jpg" alt="">
-                            <div class="dw"><img src="images/miaosha_position.png" alt=""></div>
-                        </div>
-                    </div>--%>
-                    <!--页面必要代码,img标签上请务必带上图片真实尺寸px-->
-                    <div id="showbox">
-                        <img src="../../images/25125042-1_u_1.jpg" alt="" width="800" height="800"/>
-                        <img src="../../images/25125042-2_u_1.jpg" alt="" width="800" height="800"/>
-                        <img src="../../images/25125042-3_u_1.jpg" alt="" width="800" height="800"/>
-                    </div><!--展示图片盒子-->
-                    <div id="showsum"></div><!--展示图片里边-->
-                    <p class="showpage">
-                        <a href="javascript:void(0);" id="showlast"> < </a>
-                        <a href="javascript:void(0);" id="shownext"> > </a>
-                    </p>
-
-                    <div class="textbox">
-                        <div class="text">
-                            <h3>城南旧事（名师导读，随书赠送《名著考点与创新试题精华》）</h3>
-                        </div>
-                    </div>
-                    <div class="money">
-                        <div class="left">
-                            <h2>￥9.90<span>￥36.00</span><em>限时购</em></h2>
-                        </div>
-                        <div class="right">
-
-                            <span class="glyphicon glyphicon=time"></span>
-                            <span class="glyphicon" id="seckill-box"></span>
-                            <%--<ul class="time">
-                                <div class="time-text">距离开抢时间：</div>
-                                <li class="hours"></li>
-                                <li class="none">:</li>
-                                <li class="second"></li>
-                                <li class="none">:</li>
-                                <li class="miao"></li>
-                                <div class="clear"></div>
-                            </ul>--%>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="tab">
-                        <p class="tab-hd"><span class="on">图文详情</span><span>评论(1226)</span></p>
-                        <div class="tab-nr">
-                            <div class="tab-innr show">
-                                <img src="../../images/99999990001712592_1_o.jpg" alt="">
-                            </div>
-                            <div class="tab-innr">
-                                这里显示评论列表
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<%--modal start--%>
-<div class="modal fade" id="killPhoneModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title text-center">
-                    <span class="glyphicon glyphicon-phone"></span>秒杀电话
-                </h3>
+<body>
+    <div class="container">
+        <div class="panel">
+            <div class="panel-heading text-center">
+                <h2>${seckill.name}</h2>
             </div>
-            <div class="modal-body">
+            <div class="panel-body">
                 <div class="row">
-                    <div class="col-xs-8 col-xs-offset-2">
-                        <input type="text" name="killPhone" id="killPhone" placeholder="请输入手机号o(∩_∩)o" class="form-control"/>
+                    <div class="col-xs-5" style="border:1px solid darkorange;padding-left: 35px;padding-top: 5px">
+                        <div id="showbox">
+                            <c:forEach items="${seckill.image}" var="image">
+                                <img src="../../images/${image}" alt="" width="600" height="600"/>
+                            </c:forEach>
+                        </div><!--展示图片盒子-->
+                        <div id="showsum"></div><!--展示图片里边-->
+                        <p class="showpage">
+                            <a href="javascript:void(0);" id="showlast"> < </a>
+                            <a href="javascript:void(0);" id="shownext"> > </a>
+                        </p>
+                    </div>
+                    <div class="col-xs-5 col-lg-offset-1" style="padding-top: 50px;">
+                        <div class="row">
+                            <h3>${seckill.description}</h3>
+                        </div>
+                        <div class="row" style="padding-top: 30px">
+                            <span class="glyphicon glyphicon-yen">
+                            </span>
+                            <span style="color: red;font-size: 20px">
+                                <fmt:formatNumber value="${seckill.seckillPrice}" pattern="0.00"/>
+                            </span>
+                        </div>
+                        <div class="row" style="padding-top: 30px">
+                            原价:<span class="glyphicon glyphicon-yen"></span>
+                            <span style="text-decoration:line-through;">
+                                <fmt:formatNumber value="${seckill.originalPrice}" pattern="0.00"/>
+                            </span>
+                        </div>
                     </div>
                 </div>
+               <div class="row">
+                   <div class="col-xs-6 col-xs-offset-6 text-right">
+                       <h4 class="text-danger" style="color: red">
+                           <span class="glyphicon glyphicon-time"></span>
+                           <span class="glyphicon" id="seckill-box"></span>
+                       </h4>
+                   </div>
+               </div>
             </div>
-            <div class="modal-footer">
-                <%--验证信息--%>
-                <span id="killPhoneMessage" class="glyphicon"></span>
-                <button type="button" id="killPhoneBtn" class="btn btn-success">
-                    <span class="glyphicon glyphicon-phone"></span>Submit
-                </button>
+            <div class="panel-footer">
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="javascript:void(0);" id="seckillDescA">商品详情</a></li>
+                        <li role="presentation"><a href="javascript:void(0);" id="seckillCommentA">商品评论</a></li>
+                    </ul>
+                </div>
+                <div class="row text-center" id="seckillDesc">
+                    <img src="../../images/${seckill.detailImg}" alt=""/>
+                </div>
+                <div class="row" hidden="hidden" id="seckillComment">
+                    <span>暂无评论</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <%--modal start--%>
+    <div class="modal fade" id="killPhoneModal" style="padding-top: 150px">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">
+                        <span class="glyphicon glyphicon-phone"></span>秒杀电话
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-8 col-xs-offset-2">
+                            <input type="text" name="killPhone" id="killPhone" placeholder="请输入手机号o(∩_∩)o" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <%--验证信息--%>
+                    <span id="killPhoneMessage" class="glyphicon"></span>
+                    <button type="button" id="killPhoneBtn" class="btn btn-success">
+                        <span class="glyphicon glyphicon-phone"></span>Submit
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<%--modal end--%>
-<div id="returnTop"></div>
-<footer><a href="">抢购即将开始</a></footer>
+    <%--modal end--%>
+</body>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="../../js/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="../../js/jquery.countdown.min.js"></script>
 <script type="text/javascript" src="../../js/seckill.js"></script>
 <script type="text/javascript">
-    // 倒计时
-    var startTime = new Date();
-    startTime.setFullYear(2016, 1, 1);// 抢购开始年月日
-    startTime.setHours(23);
-    startTime.setMinutes(59);
-    startTime.setSeconds(59);
-    startTime.setMilliseconds(999);
-    var EndTime = startTime.getTime();
-    function GetRTime() {
-        var NowTime = new Date();
-        var nMS = EndTime - NowTime.getTime();
-        var nD = Math.floor(nMS / (1000 * 60 * 60 * 24));
-        var nH = Math.floor(nMS / (1000 * 60 * 60)) % 24;
-        var nM = Math.floor(nMS / (1000 * 60)) % 60;
-        var nS = Math.floor(nMS / 1000) % 60;
-        if (nMS < 0) {
-            $("#dao").hide();
-            $(".banner_box .time").show();
-        } else {
-            $(".banner_box .time").show();
-            $("#daoend").hide();
-            $("#RemainD").text(nD);
-            $(".hours").text(nH);
-            $(".second").text(nM);
-            $(".miao").text(nS);
-        }
-        // 倒计时不足10补0
-        if (nH < 10) {
-            $(".hours").text('0' + nH);
-        } else {
-            $(".hours").text(nH);
-        }
-        if (nM < 10) {
-            $(".second").text('0' + nM);
-        } else {
-            $(".second").text(nM);
-        }
-        if (nS < 10) {
-            $(".miao").text('0' + nS);
-        } else {
-            $(".miao").text(nS);
-        }
-    }
-
-    $(document).ready(function () {
-        // 秒杀商品多图滚动
-        //$('.img').bxSlider({auto: true, pager:false});
-
-        var timer_rt = window.setInterval("GetRTime()", 1000);
-        // tab切换
-        $('.tab-hd span').bind('click', function (event) {
-            $(this).addClass('on').siblings().removeClass('on');
-            $('.tab-innr').eq($(this).index()).addClass('show').siblings().removeClass('show');
+    $(function () {
+        seckill.detail._init({
+            seckillId:${seckill.seckillId},
+            startTime:${seckill.startTime.time},//获取毫秒
+            endTime:${seckill.endTime.time}
         });
-        // 返回顶部
-        $('body').scrollTop(0);
-        $("#returnTop").bind('click', function () {
-            var speed = 500;
-            $('body,html').animate({scrollTop: 0}, speed);
-            return false;
-        });
-    });
 
-    $(document).ready(function(){
+        $('#seckillCommentA').click(function () {
+            $("#seckillDescA").parent().removeClass('active');
+            $(this).parent().addClass('active');
+            $('#seckillDesc').hide();
+            $('#seckillComment').show();
+        });
+        $('#seckillDescA').click(function () {
+            $('#seckillCommentA').parent().removeClass('active');
+            $(this).parent().addClass('active');
+            $('#seckillDesc').show();
+            $('#seckillComment').hide();
+        });
+        //图片放大镜
         var showproduct = {
             "boxid":"showbox",
             "sumid":"showsum",
@@ -257,16 +148,5 @@
         };//参数定义
         $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
     });
-
-    $(function () {
-      seckill.detail._init({
-          seckillId:${seckill.seckillId},
-          startTime:${seckill.startTime.time},//获取毫秒
-          endTime:${seckill.endTime.time}
-      })
-    })
-
 </script>
-
-</body>
 </html>

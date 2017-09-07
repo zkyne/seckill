@@ -9,9 +9,7 @@ import java.io.Serializable;
  * 封装秒杀执行后的结果
  * Created by kyne on 2017/9/5.
  */
-public class SeckillExecution implements Serializable {
-
-    private static final long serialVersionUID = 3195833745905130966L;
+public class SeckillExecution {
 
     private long seckillId;
     private int state;
