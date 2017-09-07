@@ -71,15 +71,15 @@ public class SeckillServiceImpl implements SeckillService {
         //执行秒杀逻辑
         Date curTime = new Date();
         try {
-            //减库存
-            int updateRow = seckillMapper.reduceNumber(seckillId, curTime);
-            if (updateRow <= 0) {
-                throw new SeckillCloseException("seckill is closed");
+            //记录秒杀记录
+            int saveRow = successSeckilledMapper.saveSuccessSeckilled(seckillId, userPhone);
+            if (saveRow <= 0) {
+                throw new RepeatKillException("seckill repeated");
             } else {
-                //记录秒杀记录
-                int saveRow = successSeckilledMapper.saveSuccessSeckilled(seckillId, userPhone);
-                if (saveRow <= 0) {
-                    throw new RepeatKillException("seckill repeated");
+                //减库存
+                int updateRow = seckillMapper.reduceNumber(seckillId, curTime);
+                if (updateRow <= 0) {
+                    throw new SeckillCloseException("seckill is closed");
                 } else {
                     //秒杀成功
                     SuccessSeckilled successSeckilled = successSeckilledMapper.getByIdWithSeckill(seckillId, userPhone);
