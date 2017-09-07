@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhangkun01 on 2017/9/4.
@@ -33,5 +34,11 @@ public interface SeckillMapper {
      * @return
      */
     List<Seckill> listAll(@Param("offset") int offset,@Param("limit") int limit);
+
+    /**
+     * 调用存储过程执行秒杀
+     * @param params
+     */
+    void seckillByProcedure(Map<String,Object> params);
 
 }

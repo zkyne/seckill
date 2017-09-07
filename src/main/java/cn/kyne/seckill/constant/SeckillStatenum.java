@@ -1,4 +1,4 @@
-package cn.kyne.seckill.enums;
+package cn.kyne.seckill.constant;
 
 /**
  * 使用枚举表述常量数据字段

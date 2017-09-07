@@ -1,9 +1,7 @@
 package cn.kyne.seckill.dto;
 
 import cn.kyne.seckill.entity.SuccessSeckilled;
-import cn.kyne.seckill.enums.SeckillStatenum;
-
-import java.io.Serializable;
+import cn.kyne.seckill.constant.SeckillStatenum;
 
 /**
  * 封装秒杀执行后的结果

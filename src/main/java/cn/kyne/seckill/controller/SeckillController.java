@@ -4,7 +4,7 @@ import cn.kyne.seckill.dto.Exposer;
 import cn.kyne.seckill.dto.SeckillExecution;
 import cn.kyne.seckill.dto.SeckillResult;
 import cn.kyne.seckill.entity.Seckill;
-import cn.kyne.seckill.enums.SeckillStatenum;
+import cn.kyne.seckill.constant.SeckillStatenum;
 import cn.kyne.seckill.exception.RepeatKillException;
 import cn.kyne.seckill.exception.SeckillCloseException;
 import cn.kyne.seckill.service.SeckillService;
