@@ -9,4 +9,4 @@
 
 3)使用存储过程可以更加高效
 
-其他秒杀解决方案:
+4)前端使用bootstrap,jquery,cookie插件countdown计时插件等
