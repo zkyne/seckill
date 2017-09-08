@@ -5,14 +5,14 @@ import cn.kyne.seckill.dao.RedisDao;
 import cn.kyne.seckill.entity.Seckill;
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;
-import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import javax.annotation.Resource;
 
 /**
  * 操作缓存的实现类
@@ -23,7 +23,7 @@ public class RedisDaoImpl implements RedisDao {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
+    @Resource
     private JedisPool jedisPool;
 
     private RuntimeSchema<Seckill> schema = RuntimeSchema.createFrom(Seckill.class);
