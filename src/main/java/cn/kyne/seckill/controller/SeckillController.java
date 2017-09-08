@@ -116,6 +116,27 @@ public class SeckillController {
         }
     }
 
+    /**
+     * 执行秒杀,通过存储过程
+     * @param seckillId
+     * @param md5
+     * @param userPhone
+     * @return
+     */
+    @PostMapping(value = "/{seckillId}/{md5}/exeProcedure",produces = {"application/json;charset=utf-8"})
+    @ResponseBody
+    public SeckillResult<SeckillExecution> exeProcedure(@PathVariable("seckillId") Long seckillId,
+                                                   @PathVariable("md5") String md5,
+                                                   @CookieValue(value = "killPhone",required = false) Long userPhone){
+
+        if(userPhone == null){
+            return new SeckillResult<>(false, "未注册");
+        }
+        //执行秒杀
+        SeckillExecution seckillExecution = seckillService.excuteSeckillProcedure(seckillId,userPhone,md5);
+        return new SeckillResult<>(true, seckillExecution);
+    }
+
     @GetMapping(value = "/time/current",produces = {"application/json;charset=utf-8"})
     @ResponseBody
     public SeckillResult<Long> curTime(){

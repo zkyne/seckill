@@ -9,8 +9,13 @@ var seckill = {
         _exposer:function (seckillId) {
             return '/seckill/' + seckillId + '/exposer';
         },
+        //程序秒杀
         _execution:function (seckillId,md5) {
             return '/seckill/' + seckillId + '/' + md5 + '/execution';
+        },
+        //通过存储过程执行秒杀
+        _executionByProcedure:function (seckillId,md5) {
+            return '/seckill/' + seckillId + '/' + md5 + '/exeProcedure'
         }
     },
     _handleSeckillKill:function (seckillId,node) {
@@ -28,7 +33,8 @@ var seckill = {
                         //开启秒杀
                         //获取秒杀地址
                         var md5 = exposer['md5'];
-                        var killUrl = seckill.URL._execution(seckillId,md5);
+                        //var killUrl = seckill.URL._execution(seckillId,md5);
+                        var killUrl = seckill.URL._executionByProcedure(seckillId,md5);
                         //绑定一次点击事件
                         $('#killBtn').one('click',function () {
                             //执行秒杀请求
