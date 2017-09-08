@@ -1,6 +1,8 @@
 # seckill
 系统采用springMVC+spring+mybatis实现简单高并发秒杀系统
 
+开发环境:mysql+redis+maven+IDEA+git+jdk1.7
+
 参考:慕课网java高并发秒杀系列课程
 
 1)系统采用通过mysql数据库行级锁的方式来应对高并发
