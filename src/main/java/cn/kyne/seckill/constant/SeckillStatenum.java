@@ -1,7 +1,7 @@
 package cn.kyne.seckill.constant;
 
 /**
- * 使用枚举表述常量数据字段
+ * 使用枚举表述常量数据字典
  * Created by zhangkun01 on 2017/9/5.
  */
 public enum SeckillStatenum {
