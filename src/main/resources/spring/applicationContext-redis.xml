@@ -18,6 +18,8 @@
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
         <constructor-arg name="host" value="${redis.host}"/>
         <constructor-arg name="port" value="${redis.port}"/>
+        <!--<constructor-arg name="timeout" value="${redis.timeout}"/>-->
+        <!--<constructor-arg name="password" value="${redis.password}"/>-->
     </bean>
     <!--开启注解扫描-->
     <context:component-scan base-package="cn.kyne.seckill.dao"/>
